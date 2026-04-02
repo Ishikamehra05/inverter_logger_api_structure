@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { inverterDao } from "@/modules/inverter";
+import { loggerDao } from "@/modules/logger";
 import { getAuthenticatedUser } from "@/lib/user_auth";
 import { hasPermission } from "@/lib/jwt";
 
@@ -34,20 +34,20 @@ export async function POST(req: NextRequest) {
     // Validation
     if (!macaddress || !plantid) {
       return NextResponse.json(
-        { error: "macaddress and plantId are required" },
+        { message: "macaddress and plantId are required" },
         { status: 400 }
       );
     }
 
     // Call DAO
-    const data = await inverterDao.create({
+    const data = await loggerDao.create({
       macaddress,
       plantid,
     });
 
     return NextResponse.json(
       {
-        message: "Inverter created",
+        message: "logger created",
         data,
       },
       { status: 201 }
@@ -55,7 +55,7 @@ export async function POST(req: NextRequest) {
   } catch (error: any) {
     if (error.message === "INVALID_PLANT") {
       return NextResponse.json(
-        { error: "Plant not found" },
+        { message: "Plant not found" },
         { status: 404 }
       );
     }
@@ -63,7 +63,7 @@ export async function POST(req: NextRequest) {
     console.error(error);
 
     return NextResponse.json(
-      { error: "Failed to create inverter" },
+      { message: "Failed to create logger" },
       { status: 500 }
     );
   }

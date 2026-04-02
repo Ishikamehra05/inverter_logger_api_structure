@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
     //  Basic Validation
     if (!plantname  || !capacity || !price || !plant_type) {
       return NextResponse.json(
-        { error: "Missing required fields" },
+        { message: "Missing required fields" },
         { status: 400 }
       );
     }
@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
 
     if (existingPlant) {
       return NextResponse.json(
-        { error: "Plant name already exists" },
+        { message: "Plant name already exists" },
         { status: 400 }
       );
     }
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest) {
     console.error("Create Plant Error:", error);
 
     return NextResponse.json(
-      { error: "Failed to create plant" },
+      { message: "Failed to create plant" },
       { status: 500 }
     );
   }

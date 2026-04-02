@@ -42,7 +42,6 @@ export async function POST(req: NextRequest) {
       const cookieStore = await cookies();
       cookieStore.delete("auth_token");
     } catch (cookieError) {
-      // Ignore cookie errors
     }
 
     return NextResponse.json({ 

@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("OTP request error:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to send OTP-101" },
+      { success: false, message: "Failed to send OTP-101" },
       { status: 500 }
     );
   }

@@ -27,7 +27,7 @@ export async function POST(req: Request) {
         if (!deviceId) {
             return NextResponse.json({
                 success: false,
-                error: "Device ID is required for security. Please provide device_id in request body.",
+                message: "Device ID is required for security. Please provide device_id in request body.",
                 code: "MISSING_DEVICE_ID"
             }, { status: 400 });
         }

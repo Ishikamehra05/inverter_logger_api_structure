@@ -81,7 +81,7 @@ export async function DELETE(
 
     if (isNaN(plantId)) {
       return NextResponse.json(
-        { error: "Invalid plant ID" },
+        { message: "Invalid plant ID" },
         { status: 400 }
       );
     }
@@ -116,7 +116,7 @@ export async function DELETE(
     console.error("Delete Plant Error:", error);
 
     return NextResponse.json(
-      { error: "Failed to delete plant" },
+      { message: "Failed to delete plant" },
       { status: 500 }
     );
   }

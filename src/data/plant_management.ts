@@ -27,7 +27,7 @@ export const plants = mysqlTable("plants", {
 });
 
 
-export const inverter = mysqlTable("inverter", {
+export const logger = mysqlTable("logger", {
   id: int("id").primaryKey().autoincrement(),
   macaddress: varchar("macaddress", { length: 255 }).notNull().unique(),
   plantid: int("plantid")
